@@ -1,0 +1,51 @@
+html{
+	background-color: #575A65;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: grey;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+/*forms*/
+#text{
+	height: 25px;
+	border-radius: 5px;
+	padding: 4px;
+	border: solid thin #aaa;
+	width: 200px;
+}
+
+#botton{
+	width: 200px;
+	background-color: black;
+	color: white;
+	border: none;
+	padding: 10px;
+}
+
+.account-form{
+	background-color: grey;
+	margin: auto;
+	width: 300px;
+	padding: 20px;
+}

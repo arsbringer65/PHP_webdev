@@ -1,0 +1,90 @@
+Project Name:	Shopping Cart System
+Description:	A simple shopping cart system with flat rate shipping and does not accept payments.
+Requirements:
+
+HEADER
+•	All pages should have the same Header.
+•	Should display a logo linked to the Home Page.
+•	Should display the customer first_name if the customer is logged-in.
+•	Should display a link named “Login”, if the customer is logged-out, that goes to the Login/Registration Page.
+•	Should display a link named “Logout”, if the customer is logged-in. The logout link should logout customers upon click and redirect to Home page.
+•	Should display a link named “Cart” that goes to the Cart Page.
+
+LOGOUT LINK
+•	Should delete data in carts and cart_id tables for the specific session.
+•	Should unset the data in the session variables.
+•	Should redirect to Home Page after.
+
+HOME PAGE
+•	Should display all products found in the products table.
+•	Should only display thumbnail images.
+•	Each product should have a link that passes products.product_id to the Product Details Page.
+
+PRODUCT DETAILS PAGE
+•	Should display the information of the product selected from the Home Page.
+•	Should display the large size images.
+•	Should have a field for Quantity that should only accept numeric characters.
+•	Quantity field should be set to 1 by default.
+•	Quantity field value should not exceed the value in the products.stock_qty.
+•	Should have a Price indicator where value is derived by multiplying Quantity with Unit Price.
+•	Should have an “Add to Cart” button that adds item to cart_items table then redirects to the Cart Page. Carts should be created at this stage if it does not exist yet.
+
+CART PAGE
+•	Should display all information of items that the customer placed in his/her cart.
+•	Should display the values for Subtotal, Shipping, and Grant Total.
+•	Should have a “Checkout” button that goes to the Login/Registration Page if the customer is logged-out or to the Shipping Page if the customer is logged-in.
+
+LOGIN/REGISTRATION PAGE – LOGIN FORM
+•	Should accept email and password
+•	Email and Password fields cannot be empty.
+•	If the data from the Login Form exists in the customer table, the customer’s customer_id and first_name should be stored in the session.
+•	If login originated from the “Checkout” button of the Cart Page, Login Form should redirect to the Shipping Page. If not, Login Form should redirect to the Home Page.
+•	If the data from the Login Form does not exist in the customer table, a message “Account does not exist.” Should show in the Login Page.
+
+ LOGIN/REGISTRATION PAGE – REGISTRATION FORM
+•	Email, Password, Confirm Password, First Name and Last Name fields are required.
+•	Filling-up the registration form should auto-login customers.
+•	If registration originated from the “Checkout” button of the Cart Page, Registration Form should redirect to the Shipping Page. If not, Registration Form should redirect to the Home Page.
+•	Email should be unique.
+
+SHIPPING PAGE
+•	Should only be accessible by logged-in customers.
+•	Should accept name, address1, address2, address3, city, state, and country.
+•	All fields should have a limit of up to 35 characters each.
+•	Address2 and address3 are optional.
+•	Shipping method should be computed based from the ceiling of total weight of all items. The total weight should then be looked-up in the shipping table using the min_weight and max_weight fields. If total weight is above the defined limit, it needs to be shipped separately and the shipping rate needs to adjust to it. 
+•	Should have a “Continue” button that updates shipping data in cart table then redirects to the Payment Page.
+
+PAYMENT PAGE
+•	Should only be accessible by logged-in customers.
+•	Should display all information of items that the customer placed in his/her cart.
+•	Should display the values for Subtotal, Shipping, and Grand Total.
+•	Should have a “Checkout” button that transfers data from the carts  and cart_items table to job_orders and job_items table respectively. After which, the page should be redirected to the Order Confirmation Page.
+
+
+ORDER CONFIRMATION PAGE
+•	Should only be accessible by logged-in customers.
+•	Should display the Shipping information of the job.
+•	Should display all information of items that the customer has ordered.
+•	Should display the values for Subtotal, Shipping and Grand Total.
+
+OPTIONAL REQUIREMENTS:
+•	Edit Quantity and Delete feature in Cart Page.
+•	Deduct units in products.stock_qty in the checkout process and show “Out of Stock” labels in the Home Page and Product Details Page.
+•	Combine the quantity of items with the same product together when adding to cart.
+
+SAMPLE DATABASE:
+
+CUSTOMERS(customer_id, first_name, last_name, email, password)
+
+PRODUCTS(product_id, product_name, product_desc, product_weight, product_stock_qty, photo, thumbnail)
+
+CARTS(cart_id,customer_id)
+
+CART_ITEMS(cart_item_id, cart_id,product_id,qty)
+
+JOB_ORDERS(job_order_id,customer_id)
+
+JOB_ITEMS(job_item_id,job_order_id,product_id)
+
+SHIPPING(shipping_id,min_weight,max_weight, price)
